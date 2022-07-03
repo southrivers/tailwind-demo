@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/main.css" rel="stylesheet">
+</head>
+
+  <!-- position: absolute是相对于最近的已经定位的元素，强调
+  是已经定位的元素，如果没有已经定位的父元素，那么将会相对html的位置
+进行漂移，因此一般的布局如果使用到position的话，外层的都是采用relative，内层采用absolute -->
+  <nav class="relative container mx-auto p-6">
+    <!-- flex container,block inline inline-block flex grid是常见的布局，flex对于页面自适应比较友好 -->
+    <div class="flex justify-between items-center">
+      <!-- logo通常图片不会单独存在，而是在div中存在，可以认为div是最基础的标签，包裹一切必要的内容 -->
+      <div class="pt-2">
+        <img src="img/logo.svg" alt="hello">
+      </div>
+      <!-- menu条目，加了md就意味着在md尺寸以上的屏幕生效的类，
+      这些类是移动端优先断点的，因此这里其实是sm:hidden -->
+      <div class="md:flex hidden space-x-6">
+        <a href="" class="hover:text-darkGrayishBlue">Price</a>
+        <a href="" class="hover:text-darkGrayishBlue">Product</a>
+        <a href="" class="hover:text-darkGrayishBlue">About</a>
+        <a href="" class="hover:text-darkGrayishBlue">Careers</a>
+        <a href="" class="hover:text-darkGrayishBlue">Community</a>
+      </div>
+      <!-- hidden默认是小屏的属性，超出小屏的范围之后就会消失 -->
+      <a href="" class="hidden md:block px-6 pt-2 pb-3 bg-brightRed text-white rounded-full items-baseline hover:bg-brightRedLight">
+        Get Started
+      </a>
+
+      <!-- hamburger icon -->
+      <!-- TODO 加入hamburger的类是用于引入新的类 -->
+      <button id="menu-btn" class="block hamburger md:hidden">
+        <span class="hamburger-top"></span>
+        <span class="hamburger-middle"></span>
+        <span class="hamburger-bottom"></span>
+      </button>
+    </div>
+
+    <!-- mobile menu -->
+    <div class="md:hidden">
+      <!-- drop-shadow用于凸显悬浮背景色 -->
+      <div id="menu" class="absolute hidden flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white
+      sm:w-auto sm:self-center left-6 right-6 drop-shadow-lg">
+      <a href="">Price</a>
+      <a href="">Product</a>
+      <a href="">About</a>
+      <a href="">Careers</a>
+      <a href="">Community</a>
+    </div>
+    </div>
+  </nav>
+  <!-- hero section -->
+  <section id="hero">
+    <div class="container flex flex-col-reverse items-center px-6 mx-auto mt-10 space-y-0 md:space-y-0 md:flex-row">
+      <!-- left -->
+      <!-- 最后是用来指定在md尺寸的屏幕下使用屏幕宽度的1/2的 -->
+      <div class="flex flex-col mb-32 space-y-12 md:w-1/2">
+        <h1 class="max-w-md text-4xl font-bold text-center md:text-5xl md:text-left">
+          Bring every together to build better products
+        </h1>
+        <!-- 对于内部包含文字的标签，通常的处理就是max-w-md,然后指定text-?xl font-size text-center text-color
+        最后指定在md的屏幕尺寸下文字的位置等属性 -->
+        <p class="max-w-md text-center text-darkGrayishBlue md:text-left">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, illo, repellat accusamus omnis eveniet corporis minus iure nemo dolorem at nesciunt cumque a reprehenderit sint veritatis culpa? Aspernatur, amet! Repellat. 
+        </p>
+        <div class="flex justify-center md:justify-start">
+          <a href="#" class="bg-brightRed text-white px-6 pt-3 pb-2 rounded-full hover:bg-brightRedLight">Get Started</a>
+        </div>
+      </div>
+      <!-- image -->
+      <div class="md:w-1/2">
+        <img src="img/illustration-intro.svg" alt="">
+      </div>
+    </div>
+  </section>
+  <!-- feture section -->
+  <section id="future">
+    <div class="container flex flex-col px-4 mx-auto mt-10 space-y-12 md:space-y-0 md:flex-row">
+      <!-- left -->
+      <div class="flex flex-col space-y-12 md:w-1/2">
+        <h2 class="max-w-md font-bold text-4xl text-center md:text-left">
+          What's the diffrences?
+        </h2>
+        <p class="max-w-sm text-center text-darkGrayishBlue md:text-left">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem consectetur labore quasi doloribus voluptate nisi ea a, cum repudiandae, earum enim, officia laboriosam blanditiis quia at quo optio vitae. Ratione?
+        </p>
+      </div>
+      <!-- right -->
+      <div class="flex flex-col space-y-8 md:w-1/2">
+        <!-- item 列表 -->
+        <!-- list 1，最后的md屏幕显示为row的话，因为序号和文字是左右排版的，虽然序号只有一个词 -->
+        <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row">
+          <div class="rounded-l-full bg-brightRedLight md:bg-transparent">
+            <div class="flex items-center space-x-2">
+              <div class="bg-brightRedLight px-4 py-2 rounded-full">
+                01
+              </div>
+              <h3 class="text-base font-bold md:hidden">
+                Track company wide progress
+              </h3>
+            </div>
+          </div>
+          <div>
+            <!-- 这里需要注意的是display的hidden默认是小屏及以上，因此后面需要加上md:block来在中屏及以上进行显示 -->
+            <h3 class="hidden font-bold text-lg mb-4 md:block ">
+              Track company wide progress
+            </h3>            
+            <p class="text-base text-darkGrayishBlue">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe, in. Blanditiis optio totam vitae suscipit id voluptatem obcaecati facilis saepe, ipsa repellat deserunt consequatur doloribus temporibus beatae voluptatibus ullam officia!
+            </p>
+          </div>
+        </div>
+
+        <!-- item2 -->
+        <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row">
+          <div class="rounded-l-full bg-brightRedLight md:bg-transparent">
+            <div class="flex items-center space-x-2">
+              <div class="bg-brightRedLight px-4 py-2 rounded-full">
+                02
+              </div>
+              <h3 class="text-base font-bold md:hidden">
+                Track company wide progress
+              </h3>
+            </div>
+          </div>
+          <div>
+            <!-- 这里需要注意的是display的hidden默认是小屏及以上，因此后面需要加上md:block来在中屏及以上进行显示 -->
+            <h3 class="hidden font-bold text-lg mb-4 md:block">
+              Track company wide progress
+            </h3>            
+            <p class="text-base text-darkGrayishBlue">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe, in. Blanditiis optio totam vitae suscipit id voluptatem obcaecati facilis saepe, ipsa repellat deserunt consequatur doloribus temporibus beatae voluptatibus ullam officia!
+            </p>
+          </div>
+        </div>
+
+        <!-- item3 -->
+        <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row">
+          <div class="rounded-l-full bg-brightRedLight md:bg-transparent">
+            <div class="flex items-center space-x-2">
+              <div class="bg-brightRedLight px-4 py-2 rounded-full">
+                03
+              </div>
+              <h3 class="text-base font-bold md:hidden">
+                Track company wide progress
+              </h3>
+            </div>
+          </div>
+          <div>
+            <!-- 这里需要注意的是display的hidden默认是小屏及以上，因此后面需要加上md:block来在中屏及以上进行显示 -->
+            <h3 class="hidden font-bold text-lg mb-4 md:block justify-end">
+              Track company wide progress
+            </h3>            
+            <p class="text-base text-darkGrayishBlue">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe, in. Blanditiis optio totam vitae suscipit id voluptatem obcaecati facilis saepe, ipsa repellat deserunt consequatur doloribus temporibus beatae voluptatibus ullam officia!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- test monial -->
+  <section id="testmonial">
+    <div class="mx-auto px-5 text-center mt-32">
+      <h2 class="text-4xl font-bold text-center">
+        what's the hell are you doing?
+      </h2>
+      <div class="flex flex-col mt-24 md:flex-row md:space-x-6">
+        <!-- test monial 1 -->
+        <div class="items-center flex flex-col rounded-lg bg-veryLightGray p-6 space-y-6 md:w-1/3">
+          <img src="img/avatar-anisha.png" class="w-16 -mt-14" alt="">
+          <h5 class="text-lg font-bold">
+            Anisha Li
+          </h5>
+          <p class="text-sm text-darkGrayishBlue">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit recusandae cupiditate nesciunt alias sint esse, blanditiis impedit doloribus reiciendis molestias quis quaerat, at sit quia, id dicta tempore repellat! Voluptate.
+          </p>
+        </div>
+
+        <!-- test monial 2 -->
+        <div class="hidden items-center md:flex flex-col rounded-lg bg-veryLightGray p-6 space-y-6 md:w-1/3">
+          <img src="img/avatar-ali.png" class="w-16 -mt-14" alt="">
+          <h5 class="text-lg font-bold">
+            Anisha Li
+          </h5>
+          <p class="text-sm text-darkGrayishBlue">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit recusandae cupiditate nesciunt alias sint esse, blanditiis impedit doloribus reiciendis molestias quis quaerat, at sit quia, id dicta tempore repellat! Voluptate.
+          </p>
+        </div>
+        <!-- test monial 3 -->
+        <div class="hidden items-center md:flex flex-col rounded-lg bg-veryLightGray p-6 space-y-6 md:w-1/3">
+          <img src="img/avatar-richard.png" class="w-16 -mt-14" alt="">
+          <h5 class="text-lg font-bold">
+            Anisha Li
+          </h5>
+          <p class="text-sm text-darkGrayishBlue">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit recusandae cupiditate nesciunt alias sint esse, blanditiis impedit doloribus reiciendis molestias quis quaerat, at sit quia, id dicta tempore repellat! Voluptate.
+          </p>
+
+          <!-- 上面由于margin top为负值，因此在纵向显示的时候会有问题，下面的会侵入到上面，因此需要
+          在不同的屏幕上进行定制化的显示 -->
+        </div>
+        
+      </div>
+      <div class="my-16">
+        <a href="#" class="bg-brightRed text-white px-6 pt-3 pb-2 rounded-full hover:bg-brightRedLight">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer section -->
+  <section id="footer" class="bg-brightRed">
+    <div class="container flex flex-col px-6 py-24 items-center justify-between mx-auto space-y-12 md:flex-row md:py-12 md:space-y-0">
+      <h2 class="text-5xl font-bold text-white leading-tight text-center md:text-4xl md:text-left">
+        Simplify the content
+      </h2>
+      <div>
+        <a href="#" class="bg-white text-brightRed px-6 pt-3 pb-2 rounded-full hover:bg-darkGrayishBlue">Get Started</a>
+      </div>
+    </div>
+  </section>
+  <footer class="bg-veryDarkBlue">
+    <!-- 对于两个元素的between好像并没有什么作用，对于三个元素的between才有效果 -->
+    <div class="container flex flex-col-reverse md:flex-row justify-between py-10 px-6 mx-auto md:space-y-0 space-y-8">
+      <!-- space-y-0 虽然展示的时候显示的flex-row，但是要结合space-y-0才可以使元素水平对齐 -->
+      <div class="flex flex-col-reverse items-center justify-between space-y-12 md:space-y-0 md:items-start md:flex-col">
+        <div class="mx-auto my-6 text-center text-white md:hidden">
+          Copyright &copy; 2022, All Rights reserved
+        </div>
+        <div>
+          <img src="img/logo-white.svg" class="h-8" alt="">
+        </div>
+        <!-- social links -->
+        <div class="flex justify-center space-x-4">
+          <a href="#">
+            <img src="img/icon-facebook.svg" class="h-8" alt="">
+          </a>
+          <a href="#">
+            <img src="img/icon-facebook.svg" class="h-8" alt="">
+          </a>
+          <a href="#">
+            <img src="img/icon-youtube.svg" class="h-8" alt="">
+          </a>
+          <a href="#">
+            <img src="img/icon-twitter.svg" class="h-8" alt="">
+          </a>
+          <a href="#">
+            <img src="img/icon-pinterest.svg" class="h-8" alt="">
+          </a>
+        </div>
+      </div>
+      <!-- container list -->
+      <!-- space 是调整内部的间距的，margin是用来调整外部的间距的 padding是用来调整div大小的 -->
+      <!-- items-center会覆盖justify-xxx属性 -->
+      <div class="flex justify-around space-x-32">
+        <div class="flex flex-col space-y-3 text-white">
+          <a href="#" class="hover:text-brightRedLight">Home</a>
+          <a href="#" class="hover:text-brightRedLight">Price</a>
+          <a href="#" class="hover:text-brightRedLight">Products</a>
+          <a href="#" class="hover:text-brightRedLight">About</a>
+        </div>
+        <div class="flex flex-col space-y-3 text-white">
+          <a href="#" class="hover:text-brightRedLight">Careers</a>
+          <a href="#" class="hover:text-brightRedLight">Price</a>
+          <a href="#" class="hover:text-brightRedLight">Products</a>
+        </div>
+      </div>
+      <!-- 不是太明白这里为什么用flex-col：因为下面还有一个copyright -->
+      <div class="flex flex-col justify-between">
+        <form>
+          <div class="flex space-x-3">
+            <!-- 当button和input放到一起的时候，input高低会受button的高度影响 -->
+            <input type="text" class="flex-1 px-4 rounded-full focus:outline-none">
+            <button class="px-6 py-2 rounded-full bg-brightRed hover:bg-brightRedLight">Go</button>
+          </div>
+        </form>
+        <div class="hidden text-white md:block">
+          Copyright &copy; 2022, All Rights reserved
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/script.js"></script>
+  </body>
+</html>

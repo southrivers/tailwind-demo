@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* 这里是注入了tailwind对应的css，tailwind将会关注这个文件
+并依照config中指定的路径提取出来对应的类，然后将其进行编译成css类 */
+
+/* 这里可以添加自定义的css，并且其结果会被编译到main.css文件中 */
+body {
+    background-image: url('../img/bg-tablet-pattern.svg');
+    background-repeat: no-repeat;
+    /* background-size用于显示尺寸大小 */
+    background-size: 800px;
+    background-position: 90% -25%;
+}
+
+/* 媒体查询功能用于适配不同规格的显示屏幕 */
+@media(max-width: 576px) {
+    body {
+        background-position: 70px -70px;
+        background-size: 500px;
+    }
+}
+
+.hamburger {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    /* transition区别于transform */
+    /* transition是动画，transform是移位、旋转 */
+    transition: all 0.25s;
+    /* 这里的relative是为了里面元素的absolute */
+    position: relative;
+}
+
+.hamburger-top,
+.hamburger-middle,
+/* 使用span实现线条 */
+.hamburger-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: #000;
+    transition: all 0.25s;
+}
+.hamburger-middle {
+    transform: translateY(7px);
+}
+
+.hamburger-bottom {
+    transform: translateY(14px);
+}
+
+.open {
+    /* transform: rotate(90deg); */
+    /* transform: translateY(0px); */
+}
+
+.open .hamburger-top {
+    transform: rotate(45deg);
+}
+.open .hamburger-middle {
+    display: none;
+}
+
+.open .hamburger-bottom {
+    transform: rotate(-45deg);
+}
