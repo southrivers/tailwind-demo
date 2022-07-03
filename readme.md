@@ -35,3 +35,6 @@ module.exports = {
 
 # https://ipaddress.com/website/github.com
 github域名不通的时候通过手动设置ip地址来解决
+
+
+https://www.youtube.com/watch?v=dFgzHOX84xQ
