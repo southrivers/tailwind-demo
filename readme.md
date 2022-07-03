@@ -31,3 +31,7 @@ module.exports = {
 
 ## 媒体查询功能
 在使用tailwind的媒体查询的功能的时候，通常将屏幕适配功能放到最后
+
+
+# https://ipaddress.com/website/github.com
+github域名不通的时候通过手动设置ip地址来解决
